@@ -7,6 +7,29 @@ test.beforeEach(async ({ page }) => {
 
 })
 
+test('UI Components :open web table in second page and edit email id taking id as refrence   ', async ({ page }) => {
+
+
+
+    // Landed to page 
+    await page.getByTitle('Tables & Data').click();
+    await page.getByTitle('Smart Table').click();
+    const Locator_pageNav = page.locator('.ng2-smart-page-link', { hasText: '2' });
+    await Locator_pageNav.click();
+
+    await page.getByRole('row', { name: "11" }).nth(0).locator('.nb-edit').click();
+
+    await page.locator('input-editor').getByPlaceholder('E-mail').clear();
+
+    await page.locator('input-editor').getByPlaceholder('E-mail').fill('mailsac@mainModule.com');
+
+    await page.locator('.nb-checkmark').click();
+
+
+
+})
+
+
 test('UI Components :open web table fourth row and edit first name  ', async ({ page }) => {
 
 
@@ -27,10 +50,10 @@ test('UI Components :open web table fourth row and edit first name  ', async ({ 
     await page.locator('[class="nb-checkmark"]').click();
 
 
-
-
-
 })
+
+
+
 
 
 
