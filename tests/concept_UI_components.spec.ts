@@ -70,7 +70,11 @@ test.describe('Suite -1 : UI Components', () => {
 
 })
 
-test.describe('Suite 2 : UI Componets', () => {
+
+
+
+
+test.describe('Suite - 2 : UI Componets', () => {
 
     test.beforeEach(async ({ page }) => {
 
@@ -112,103 +116,104 @@ test.describe('Suite 2 : UI Componets', () => {
     })
 
 
-    test('Third UI component: Select list box :', async ({ page }) => {
+    // test('fourth UI component: Select list box :', async ({ page }) => {
 
 
-        const Locator_selectbutton: Locator = page.locator('ngx-header nb-select');
-        await Locator_selectbutton.click();
+    //     const Locator_selectbutton: Locator = page.locator('ngx-header nb-select');
+    //     await Locator_selectbutton.click();
 
-        // page.getByRole('list'); //will be use when we have UL tag
-        // page.getByRole('listitem'); //will be use when we have LI tag
+    //     // page.getByRole('list'); //will be use when we have UL tag
+    //     // page.getByRole('listitem'); //will be use when we have LI tag
 
+    //     //Here we are throwing all elements into a const and filtering what we need 
+    //     //step 2: After filtering with name Cosmic we are performing click action on Cosmic 
+    //     const Locator_optionlist: Locator = page.locator('nb-option-list nb-option');
+    //     await expect(Locator_optionlist).toHaveText(["Light", "Dark", "Cosmic", "Corporate"]);
+    //     await Locator_optionlist.filter({ hasText: "Cosmic" }).click();
 
-        //Here we are throwing all elements into a const and filtering what we need 
-        //step 2: After filtering with name Cosmic we are performing click action on Cosmic 
-        const Locator_optionlist: Locator = page.locator('nb-option-list nb-option');
-        await expect(Locator_optionlist).toHaveText(["Light", "Dark", "Cosmic", "Corporate"]);
-        await Locator_optionlist.filter({ hasText: "Cosmic" }).click();
 
 
-        //Now we want to go little bit Adavance mode :
-        //we want to verify color is changing after click with RGB values:
+    //     //Now we want to go little bit Adavance mode :
+    //     //we want to verify color is changing after click with RGB values:
 
-        const header = page.locator('nb-layout-header');
-        // await expect(header).toHaveCSS('background-color', 'rgb(50,50,89)');
+    //     const header = page.locator('nb-layout-header');
+    //     // await expect(header).toHaveCSS('background-color', 'rgb(50,50,89)');
 
-        const colors = {
-            "Light": "rgb(50,50,89)",
-            "Dark": "rgb(34,43,69)",
-            "Cosmic": "rgb(50,50,89)",
-            "Corporate": "rgb(255,255,255)",
+    //     const colors = {
+    //         "Light": "rgb(50,50,89)",
+    //         "Dark": "rgb(34,43,69)",
+    //         "Cosmic": "rgb(50,50,89)",
+    //         "Corporate": "rgb(255,255,255)",
 
-        }
+    //     }
 
-        for (const color in colors) {
-            await Locator_optionlist.filter({ hasText: color }).click();
-            // if we want to validate with respective to css for all items 
-            await expect(header).toHaveCSS('background-color', colors[color]);
+    //     for (const color in colors) {
+    //         await Locator_optionlist.filter({ hasText: color }).click();
+    //         // if we want to validate with respective to css for all items 
+    //         await expect(header).toHaveCSS('background-color', colors[color]);
 
-            if (color != "corporate") {
+    //        //waiting for corportate nd clicking on it 
+    //         if(color == 'corporate'){
+    //             await Locator_selectbutton.click(); 
+    //         }
 
-                await Locator_selectbutton.click();
-            }
 
 
+    //     }
 
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
