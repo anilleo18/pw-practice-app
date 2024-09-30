@@ -55,6 +55,49 @@ test('UI Components :open web table fourth row and edit first name  ', async ({ 
 
 
 
+test('UI Components :open web table age row click on age 20 and check all ages are matching', async ({ page }) => {
+
+    const ages: string[] = ["20", "30", "40", "200"];
+
+    // Landed to page 
+    await page.getByTitle('Tables & Data').click();
+    await page.getByTitle('Smart Table').click();
+
+
+    for (let age of ages) {
+
+        //first tarvel directly to row using getbyrole  and catch edit locator 
+        await page.locator('input-filter').getByPlaceholder('Age').clear();
+        await page.locator('input-filter').getByPlaceholder('Age').fill(age);
+        await page.waitForTimeout(4000);
+
+        const Locator_rows: Locator[] = await page.locator('tbody tr').all();
+
+        for (const row of Locator_rows) {
+
+            const data_frm_lastcell = await row.locator('td').last().textContent();
+
+            if (age == "200") {
+
+                expect(await page.getByRole('table').textContent()).toContain("No data found");
+
+
+            } else {
+
+                expect(data_frm_lastcell).toEqual(age);
+
+
+            }
+
+
+
+        }
+    }
+})
+
+
+
+
 
 
 
