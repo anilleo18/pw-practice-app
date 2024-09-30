@@ -26,9 +26,35 @@ test('UI Components Tool tip', async ({ page }) => {
 
     expect(tooltip.trim()).toEqual("This is a tooltip")
 
+})
 
+
+test('UI Components :Dialouge Box ', async ({ page }) => {
+
+
+
+
+    await page.getByTitle('Tables & Data').click();
+    await page.getByTitle('Smart Table').click();
+
+    page.on('dialog', dialog => {
+
+        dialog.accept();
+    })
+
+    //1st way :
+    await page.locator('.nb-trash').nth(0).click();
+    const loc_arrived: string = await page.getByRole('table').locator('tr', { hasText: "fat@yandex.ru" }).textContent()
+
+    // Alternative way:
+    await page.getByRole('table').locator('tr', { hasText: "mdo@gmail.com" }).locator('.nb-trash').click();
+    await expect(page.locator('table tr')).not.toHaveText('mdo@gmail.com')
 
 
 
 
 })
+
+
+
+
