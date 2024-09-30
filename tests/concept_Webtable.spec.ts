@@ -71,11 +71,17 @@ test('UI Components :open web table age row click on age 20 and check all ages a
         await page.locator('input-filter').getByPlaceholder('Age').fill(age);
         await page.waitForTimeout(4000);
 
+
+        // with help of tbody and tr we retrive all elements in Locator_row
         const Locator_rows: Locator[] = await page.locator('tbody tr').all();
 
+
+        // All locator_row contains list of elements and we are retreving each row 
         for (const row of Locator_rows) {
 
+            //with taking row as Refernce travel for all colomns .but last method will help to etract last colomn text 
             const data_frm_lastcell = await row.locator('td').last().textContent();
+
 
             if (age == "200") {
 
@@ -84,6 +90,7 @@ test('UI Components :open web table age row click on age 20 and check all ages a
 
             } else {
 
+                // data_frm_lastcell will extract in every attempt and we are equating :
                 expect(data_frm_lastcell).toEqual(age);
 
 
