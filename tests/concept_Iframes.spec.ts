@@ -1,4 +1,6 @@
-import { FrameLocator, Locator, test } from '@playwright/test'
+import { expect, FrameLocator, Locator, test } from '@playwright/test'
+import { exec } from 'child_process';
+import { ExtraComponentsComponent } from '../src/app/pages/extra-components/extra-components.component';
 
 test.beforeEach(async ({ page }) => {
 
@@ -13,7 +15,25 @@ test('Drag and drop with Iframes ', async ({ page }) => {
 
     //step 2: with help of Locato_Iframe reference variable travel with drag to method 
     //step 3: Dragto method should also be hadle with Locato_Iframe refrence variable 
-    await Locator_Iframe.locator('li', { hasText: 'High Tatras 3' }).dragTo(Locator_Iframe.locator("#trash"));
+    await Locator_Iframe.locator('h5', { hasText: 'High Tatras 3' }).dragTo(Locator_Iframe.locator("#trash"));
+
+
+    //Controlling Mouse more precise
+
+    //Step 1:Find the iframe and pass it into  FrameLocator and use that FrameLocator reference
+    const Locator_Iframe_Precise: FrameLocator = page.frameLocator('[rel-title="Photo Manager"] iframe');
+
+    await Locator_Iframe_Precise.locator('li', { hasText: 'High Tatras 4' }).hover()
+    await page.mouse.down();
+    await Locator_Iframe_Precise.locator("#trash").hover();
+    await page.mouse.up();
+
+
+    await expect(Locator_Iframe_Precise.locator("#trash ul li h5")).toHaveText(['High Tatras 3', 'High Tatras 4'])
+
+
+
+
 
 
 
