@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 
 })
 
-test('Date Picker', async ({ page }) => {
+test('Date Picker: Dynamically handling - 1', async ({ page }) => {
 
 
     await page.getByTitle('Forms').click();
@@ -25,7 +25,7 @@ test('Date Picker', async ({ page }) => {
 })
 
 
-test('Date Picker : Dynamically handling ', async ({ page }) => {
+test('Date Picker : Dynamically handling -2', async ({ page }) => {
 
 
     await page.getByTitle('Forms').click();
@@ -59,7 +59,7 @@ test('Date Picker : Dynamically handling ', async ({ page }) => {
 
 
 
-test('Date Picker : Adavence Dynamically handling ', async ({ page }) => {
+test('Date Picker : Dynamically handling - 3  ', async ({ page }) => {
 
     await page.getByTitle('Forms').click();
     await page.getByTitle('Datepicker').click();
@@ -68,6 +68,7 @@ test('Date Picker : Adavence Dynamically handling ', async ({ page }) => {
 
     // Used Data class and selected tommorow date  with +1 if i want next week it will be +7
     let date = new Date();
+    //here i am clinking after 37 days
     date.setDate(date.getDate() + 37);
     const date_recevied_after_setDate = date.getDate().toString()
 
@@ -82,8 +83,10 @@ test('Date Picker : Adavence Dynamically handling ', async ({ page }) => {
     let calnder_month_Date = await page.locator('nb-calendar-view-mode').textContent();
     const expectedmonthandyear = ` ${Long_form_of_month} ${year}`
 
+    //here exratcting calender month : if its not matching we are iterating loop and clicking on chevron 
     while (!calnder_month_Date.includes(expectedmonthandyear)) {
 
+        //performing click on chevron if Month is not matching 
         await page.locator('nb-calendar-pageable-navigation [data-name="chevron-right"]').click();
         calnder_month_Date = await page.locator('nb-calendar-view-mode').textContent();
     }
