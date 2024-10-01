@@ -1,6 +1,5 @@
 import { expect, FrameLocator, Locator, test } from '@playwright/test'
-import { exec } from 'child_process';
-import { ExtraComponentsComponent } from '../src/app/pages/extra-components/extra-components.component';
+
 
 test.beforeEach(async ({ page }) => {
 
