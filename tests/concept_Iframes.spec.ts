@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 
 })
 
-test('Drag and drop with Iframes ', async ({ page }) => {
+test('Drag and drop with Iframes bot genral and Precise methods  ', async ({ page }) => {
 
     //Step 1:Find the iframe and pass it into  FrameLocator and use that FrameLocator reference
     const Locator_Iframe: FrameLocator = page.frameLocator('[rel-title="Photo Manager"] iframe');
@@ -28,9 +28,10 @@ test('Drag and drop with Iframes ', async ({ page }) => {
     await page.mouse.down();
     await Locator_Iframe_Precise.locator("#trash").hover();
     await page.mouse.up();
-
-
     await expect(Locator_Iframe_Precise.locator("#trash ul li h5")).toHaveText(['High Tatras 3', 'High Tatras 4'])
+
+    //Step 3: Perform Page close 
+    await page.close();
 
 
 
