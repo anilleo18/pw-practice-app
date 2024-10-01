@@ -23,6 +23,7 @@ test('Drag and drop with Iframes ', async ({ page }) => {
     //Step 1:Find the iframe and pass it into  FrameLocator and use that FrameLocator reference
     const Locator_Iframe_Precise: FrameLocator = page.frameLocator('[rel-title="Photo Manager"] iframe');
 
+    //Step 2 : First hover on element click mouse down and hover again on Element 2 and Make mouse up .
     await Locator_Iframe_Precise.locator('li', { hasText: 'High Tatras 4' }).hover()
     await page.mouse.down();
     await Locator_Iframe_Precise.locator("#trash").hover();
