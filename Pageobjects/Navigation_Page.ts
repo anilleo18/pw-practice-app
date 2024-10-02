@@ -1,31 +1,41 @@
-import { Page } from '@playwright/test'
+import { Locator, Page } from '@playwright/test'
 
 export class Naviagation_Page {
 
     readonly page: Page
+    readonly formlayoutlocator: Locator
+    readonly Datepickerlocator: Locator
+    readonly tooltipLocator: Locator
+    readonly tableDatalocator: Locator
 
 
     constructor(page: Page) {
         this.page = page
+        this.formlayoutlocator = page.locator('[title="Form Layouts"]');
+        this.Datepickerlocator = page.getByTitle('Datepicker');
+        this.tooltipLocator = page.getByTitle('Tooltip');
+        this.tooltipLocator = page.getByTitle('Tooltip');
     }
+
+
 
     async Form_layout_pageNav() {
 
         await this.selectgroupmenu_Nav("Forms");
-        await this.page.locator('[title="Form Layouts"]').click();
+        await this.formlayoutlocator.click();
     }
 
 
     async Datepicker() {
 
         await this.selectgroupmenu_Nav("Forms");
-        await this.page.getByTitle('Datepicker').click();
+        await this.Datepickerlocator.click();
     }
 
     async tooltip() {
 
         await this.selectgroupmenu_Nav("Modal & Overlays");
-        await this.page.getByTitle('Tooltip').click();
+        await this.tooltipLocator.click();
 
     }
 

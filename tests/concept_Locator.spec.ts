@@ -14,7 +14,7 @@ test('Locator Basic concepts', async ({ page }) => {
     await page.getByPlaceholder('Jane Doe').fill("Anil");
 
     //By Role
-    await page.getByRole('textbox', { name: "Email" }).first().fill("anil@mac.com");
+        await page.getByRole('textbox', { name: "Email" }).first().fill("anil@mac.com");
     await page.getByRole('button', { name: "submit" }).first().click();
 
     //By Label
